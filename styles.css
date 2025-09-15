@@ -1,11 +1,11 @@
 body {
     background: black;
-    color: rgb(243, 243, 243);
+    color: rgb(255, 255, 255);
     max-width: 1420px;
     margin: 0 auto;
     padding: 1em;
     font-family: system-ui;
-    /* https://clamp.font-size.app/ */
+    /* Good for responsive. Adjusts dynamically rather than resize font manually per screen type- https://clamp.font-size.app/ */
     font-size: clamp(0.625rem, -0.0112rem + 3.3929vw, 2rem);
     height: 100vh;
     overflow: hidden;
