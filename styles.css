@@ -1,0 +1,25 @@
+body {
+    background: black;
+    color: rgb(243, 243, 243);
+    max-width: 1420px;
+    margin: 0 auto;
+    padding: 1em;
+    font-family: system-ui;
+    /* https://clamp.font-size.app/ */
+    font-size: clamp(0.625rem, -0.0112rem + 3.3929vw, 2rem);
+    height: 100vh;
+    overflow: hidden;
+}
+
+header {
+ line-height: 10px;   
+}
+
+header img {
+    height: 1em;
+}
+
+header a {
+    text-decoration: none;
+    margin-right: 5px;
+}
