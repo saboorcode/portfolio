@@ -7,10 +7,9 @@ const opening = document.querySelector(".star-wars-opening");
 //opening.style.display = "none";
 portfolio.style.display = "none";
 
-// setTimeout(code, delay)
 // Delay: 1000 = 1 second
+// Switch background and adjusts style for main portfolio.  Call Typer() function - See "Job Title Typer" code block below.
 setTimeout(()=> {
-    console.log("test");
     portfolio.style.display = "block";
     opening.style.display = "none";
     document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.70)), url("assets/bg/xwing.png") no-repeat center center / cover fixed`;
@@ -22,6 +21,7 @@ setTimeout(()=> {
 /*******************/
 /* Job Title Typer */
 /*******************/
+// Realistic User Typing with blinking "_"
 const jobTitlePara = document.querySelector(".job-title");
 
 const jobTitle = "Aspiring Web Developer";
@@ -34,8 +34,8 @@ jobTitlePara.textContent = "A";
 
 let intervalCount = 1; // Declared and initialized to keep track of character index
 
-// Typer implementation
-// This is just like a loop, executes code block per delay.
+// Typer implementation - Realistic User Typing with blinking "_"
+// setInterval() just like a loop, executes code block per delay aka iternation.
 function typer(){
 setInterval(() => {
     if (jobTitle.length !== intervalCount) { // Type each character until the last character
