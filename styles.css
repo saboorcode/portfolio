@@ -1,25 +1,220 @@
 body {
-    background: black;
-    color: rgb(255, 255, 255);
-    max-width: 1420px;
     margin: 0 auto;
-    padding: 1em;
+    color: rgb(255, 255, 255);
     font-family: system-ui;
-    /* Good for responsive. Adjusts dynamically rather than resize font manually per screen type- https://clamp.font-size.app/ */
+    /* Good for responsive. Adjusts dynamically rather than resize font manually per screen type which can gets messy - https://clamp.font-size.app/ */
     font-size: clamp(0.625rem, -0.0112rem + 3.3929vw, 2rem);
-    height: 100vh;
     overflow: hidden;
+    background: url("assets/bg/star.png") no-repeat center center / cover fixed;
+    background-attachment: fixed;
+}
+
+a {
+    text-decoration: none;
 }
 
 header {
- line-height: 10px;   
+    white-space: nowrap;
 }
 
 header img {
     height: 1em;
 }
 
-header a {
-    text-decoration: none;
-    margin-right: 5px;
+.portfolio {
+    display: none;
+}
+
+.star-wars-opening {
+    font-size: 10vh;
+    color: black;
+    line-height: 22px;
+    text-align: center;
+}
+
+.greeting {
+    margin-top: 25vh;
+    font-size: 10vw;
+}
+
+.rogue-one img {
+    z-index: 1;
+    position: absolute;
+    top: -9999px;
+    animation: rogue-one-fly-in 4s normal 1s forwards;
+    max-height: 4em;
+    height: 90vw;
+}
+
+.fathead img:first-child {
+    position: absolute;
+    top: -9999px;
+    animation: fathead-fly-in-1 4s normal 2s forwards;
+    max-height: 1em;
+    height: 40vw;
+}
+
+.falcon img {
+    position: absolute;
+    top: -9999px;
+    animation: falcon-fly-in 4s normal 2.5s forwards;
+    max-height: 2em;
+    height: 40vw;
+}
+
+.venator img {
+    position: absolute;
+    top: -9999px;
+    animation: venator-fly-in 4s normal 3s forwards;
+    max-height: 2em;
+    height: 40vw;
+}
+
+.xwing img {
+    position: absolute;
+    top: -9999px;
+    animation: xwing-fly-in 4.5s normal 5.5s forwards;
+    height: 1em;
+}
+
+.star-wars-opening h1 {
+    text-shadow: -5px -5px #eede46, 5px -5px #eede46, -5px 5px #eede46,
+        5px 5px #eede46;
+    /* Creates shadows in all four directions */
+    animation: opening-out 5s normal 1.5s forwards;
+}
+
+@keyframes opening-out {
+    to {
+        opacity: 0%;
+    }
+}
+
+@keyframes rogue-one-fly-in {
+    from {
+        top: -10em;
+        right: 50vh;
+    }
+
+    80% {
+        right: 5vw;
+    }
+
+    to {
+        top: 20vh;
+        right: 150vw;
+        display: none;
+    }
+}
+
+@keyframes fathead-fly-in-1 {
+    from {
+        top: -5em;
+        right: 70vh;
+    }
+
+    80% {
+        right: 5vh;
+    }
+
+    to {
+        top: 10vh;
+        right: 150vw;
+        display: none;
+    }
+}
+
+@keyframes fathead-fly-in-2 {
+    from {
+        top: -10em;
+        right: 90vh;
+    }
+
+    80% {
+        right: 50vh;
+    }
+
+    to {
+        top: 50vh;
+        right: 150vw;
+        display: none;
+    }
+}
+
+@keyframes fathead-fly-in-3 {
+    from {
+        top: -5em;
+        right: 70vh;
+    }
+
+    80% {
+        right: 20vh;
+    }
+
+    to {
+        top: 70vh;
+        right: 150vw;
+        display: none;
+    }
+}
+
+@keyframes falcon-fly-in {
+    from {
+        top: -5em;
+        right: 70vh;
+    }
+
+    80% {
+        right: 5vw;
+    }
+
+    to {
+        top: 70vh;
+        right: 150vw;
+        display: none;
+    }
+}
+
+@keyframes venator-fly-in {
+    from {
+        top: -5em;
+        right: 70vh;
+    }
+
+    80% {
+        right: 10vw;
+    }
+
+    to {
+        top: 30vh;
+        right: 150vw;
+        display: none;
+    }
+}
+
+@keyframes xwing-fly-in {
+    0% {
+        height: 10vh;
+        top: 0;
+        right: 0;
+    }
+
+    25% {
+        height: 30vh;
+        top: 10vh;
+        right: 70vw;
+    }
+
+    100% {
+        top: 0;
+        right: 0;
+        max-width: 100vw;
+        height: auto;
+    }
+}
+
+@keyframes welcome {
+    to {
+        opacity: 100%;
+    }
 }
