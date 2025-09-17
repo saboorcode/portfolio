@@ -7,7 +7,15 @@ body {
     overflow: hidden;
     background: url("assets/bg/star.png") no-repeat center center / cover fixed;
     background-attachment: fixed;
+    max-width: 1420px;
+    margin: 0 auto;
 }
+
+/*
+html {
+    cursor: url("assets/cursor/cursor.cur"), pointer;
+}
+*/
 
 a {
     text-decoration: none;
@@ -25,6 +33,9 @@ header img {
     display: none;
 }
 
+/*************************/
+/* Star Wars Theme Items */
+/*************************/
 .star-wars-opening {
     font-size: 10vh;
     color: black;
@@ -34,7 +45,7 @@ header img {
 
 .greeting {
     margin-top: 25vh;
-    font-size: 10vw;
+    font-size: 80%;
 }
 
 .rogue-one img {
@@ -73,7 +84,7 @@ header img {
 .xwing img {
     position: absolute;
     top: -9999px;
-    animation: xwing-fly-in 4.5s normal 5.5s forwards;
+    animation: xwing-fly-in 4s normal 5.5s forwards;
     height: 1em;
 }
 
@@ -84,6 +95,9 @@ header img {
     animation: opening-out 5s normal 1.5s forwards;
 }
 
+/******************/
+/* CSS ANIMATIONS */
+/******************/
 @keyframes opening-out {
     to {
         opacity: 0%;
@@ -203,6 +217,15 @@ header img {
         height: 30vh;
         top: 10vh;
         right: 70vw;
+    }
+
+    50% {
+        top: 20vh;
+        rotate: 360deg;
+    }
+
+    70% {
+        rotate: 0deg;
     }
 
     100% {
