@@ -105,15 +105,16 @@ header img {
 }
 
 .skipOptionPara {
+    font-weight: 800;
     position: absolute;
     top: -1em;
     right: 0;
     background: red;
     color: #eede46;
     width: fit-content;
-    font-size: 16px;
+    font-size: 12px;
     padding: 5px;
-    animation: skipOptionPara 5s normal 1s forwards;
+    animation: skipOptionPara 4s normal 1s forwards;
 }
 
 /******************/

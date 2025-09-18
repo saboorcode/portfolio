@@ -21,6 +21,9 @@ function themeSwitch() { // execute once
     opening.style.display = "none";
     document.body.style.background = `linear-gradient(rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.70)), url("assets/bg/xwing.png") no-repeat center center / cover fixed`;
     typer();
+
+    opening.remove(); // Deleting HTML code for Star Wars animation which makes it eligble for garbage collection and free up user's memory resources
+    // HTML Code deletion is confirmed in source code
 }
 
 function themeSkipByUser() { // User can skip Star Wars Opening by clicking anywhere on web page
@@ -28,11 +31,11 @@ function themeSkipByUser() { // User can skip Star Wars Opening by clicking anyw
     const skipOptionPara = document.createElement("p");
     skipOptionPara.textContent = "Click Anywhere To Skip";
     skipOptionPara.classList.add("skipOptionPara"); // added CSS class with specific style rules so I don't spam it here with DOM API..
-    document.body.prepend(skipOptionPara);
+    opening.prepend(skipOptionPara);
 
     // User clicked on web page to skip the Star Wars animation. Invoke themeSwitch()
     document.addEventListener("click", () => {
-        if (!userSkipTheme){
+        if (!userSkipTheme) {
             userSkipTheme = true;
             themeSwitch();
         }
