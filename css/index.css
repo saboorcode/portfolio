@@ -5,9 +5,10 @@ body {
     /* Good for responsive. Adjusts dynamically rather than resize font manually per screen type which can gets messy - https://clamp.font-size.app/ */
     font-size: clamp(0.625rem, -0.0112rem + 3.3929vw, 2rem);
     overflow: hidden;
-    background: url("assets/bg/star.png") no-repeat center center / cover fixed;
+    background: url("/assets/bg/star.png") no-repeat center center / cover fixed;
     background-attachment: fixed;
     max-width: 1420px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 /*
@@ -17,31 +18,6 @@ html {
 */
 
 /* 1vw is 1% of viewport width. For example, 8vw of 1000px is 80px. */
-
-a {
-    text-decoration: none;
-}
-
-header {
-    white-space: nowrap;
-}
-
-
-header img {
-    height: 1em;
-}
-
-.portfolio {
-    display: none;
-}
-
-.job-title {
-    margin-top: -1.5em;
-}
-
-.header-links {
-    margin-top: -.8em;
-}
 
 /*************************/
 /* Star Wars Theme */
@@ -100,7 +76,7 @@ header img {
 .xwing img {
     position: absolute;
     top: -9999px;
-    animation: xwing-fly-in 5s normal 4.5s forwards;
+    animation: xwing-fly-in 4.5s normal 4.5s forwards;
     height: 1em;
 }
 
@@ -114,7 +90,7 @@ header img {
     width: fit-content;
     font-size: 12px;
     padding: 5px;
-    animation: skipOptionPara 4s normal 1s forwards;
+    animation: skipOptionPara 4s normal 2s forwards;
 }
 
 /******************/
@@ -236,7 +212,7 @@ header img {
     }
 
     25% {
-        rotate: -30deg;
+        rotate: -20deg;
         height: 30vh;
         top: 20vh;
         right: 60vw;
@@ -245,7 +221,7 @@ header img {
     65% {
         rotate: 90deg;
         top: 20vh;
-        right: -100vw;
+        right: -150vw;
     }
 
     66% {
