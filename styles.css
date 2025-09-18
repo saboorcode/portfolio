@@ -46,6 +46,13 @@ header img {
 /*************************/
 /* Star Wars Theme */
 /*************************/
+.star-wars-opening h1 {
+    text-shadow: -5px -5px #eede46, 5px -5px #eede46, -5px 5px #eede46,
+        5px 5px #eede46;
+    /* Creates shadows in all four directions */
+    animation: opening-out 5s normal 1.5s forwards;
+}
+
 .star-wars-opening {
     font-size: 10vh;
     color: black;
@@ -97,11 +104,16 @@ header img {
     height: 1em;
 }
 
-.star-wars-opening h1 {
-    text-shadow: -5px -5px #eede46, 5px -5px #eede46, -5px 5px #eede46,
-        5px 5px #eede46;
-    /* Creates shadows in all four directions */
-    animation: opening-out 5s normal 1.5s forwards;
+.skipOptionPara {
+    position: absolute;
+    top: -1em;
+    right: 0;
+    background: red;
+    color: #eede46;
+    width: fit-content;
+    font-size: 16px;
+    padding: 5px;
+    animation: skipOptionPara 5s normal 1s forwards;
 }
 
 /******************/
@@ -244,6 +256,12 @@ header img {
         right: 0;
         max-width: 100vw;
         height: auto;
+    }
+}
+
+@keyframes skipOptionPara {
+    to {
+        opacity: 0%;
     }
 }
 

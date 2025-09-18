@@ -15,7 +15,7 @@ typer();
 let userSkipTheme = false;
 
 // Delay: 1000 = 1 second
-// Terminate star wars theme opening and switch to main portfolio.  Invoke typer() function - See "Typer" code block below.
+// Terminate & Switch Star Wars opening to Main Portfolio.  Invoke typer() function - See "Typer" code block below.
 function themeSwitch() { // execute once
     portfolio.style.display = "block";
     opening.style.display = "none";
@@ -23,14 +23,25 @@ function themeSwitch() { // execute once
     typer();
 }
 
-function themeSkipByUser() {
+function themeSkipByUser() { // User can skip Star Wars Opening by clicking anywhere on web page
+    // Notify User at the start of Star Wars animation that skip is an option.
+    const skipOptionPara = document.createElement("p");
+    skipOptionPara.textContent = "Click Anywhere To Skip";
+    skipOptionPara.classList.add("skipOptionPara"); // added CSS class with specific style rules so I don't spam it here with DOM API..
+    document.body.prepend(skipOptionPara);
+
+    // User clicked on web page to skip the Star Wars animation. Invoke themeSwitch()
     document.addEventListener("click", () => {
-        userSkipTheme = true;
-        themeSwitch();
+        if (!userSkipTheme){
+            userSkipTheme = true;
+            themeSwitch();
+        }
     });
 
+    // User is enjoying the Star Wars animation! invoke themeSwitch() after 9.5 seconds
     setTimeout(() => {
         if (!userSkipTheme) {
+            userSkipTheme = true;
             themeSwitch();
         }
     }, 9500);
@@ -39,7 +50,7 @@ function themeSkipByUser() {
 themeSkipByUser();
 
 /*******************/
-/* Typer */
+/*     Typer       */
 /*******************/
 // Realistic Typing Animation with blinking underscore "_"
 const jobTitlePara = document.querySelector(".job-title");
@@ -60,11 +71,11 @@ function typer() {
     setInterval(() => {
         if (jobTitle.length !== intervalCount) { // Type each character until the last character
             // Utilized replace method to remove "_" and append right after typing the next character
-            // It's instant it looks like "_" was not removed. Inserting substring at an index method isn't a thing.
+            // It's instant it looks like "_" was not removed. Inserting substring at an index method isn't a thing sadly.
             jobTitlePara.textContent = (jobTitlePara.textContent + jobTitle[intervalCount]).replace("_", "");
             jobTitlePara.append(underscore);
             intervalCount++;
-        } else { // Implement blinking "_" - Increases delay for realistic blinking "_"
+        } else { // Blinking "_" every .2 seconds
             if (jobTitlePara.textContent.includes("_")) {
                 jobTitlePara.textContent = jobTitlePara.textContent.replace("_", "");
             } else {
