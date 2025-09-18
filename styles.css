@@ -8,7 +8,6 @@ body {
     background: url("assets/bg/star.png") no-repeat center center / cover fixed;
     background-attachment: fixed;
     max-width: 1420px;
-    margin: 0 auto;
 }
 
 /*
@@ -16,6 +15,8 @@ html {
     cursor: url("assets/cursor/cursor.cur"), pointer;
 }
 */
+
+/* 1vw is 1% of viewport width. For example, 8vw of 1000px is 80px. */
 
 a {
     text-decoration: none;
@@ -25,6 +26,7 @@ header {
     white-space: nowrap;
 }
 
+
 header img {
     height: 1em;
 }
@@ -33,58 +35,65 @@ header img {
     display: none;
 }
 
+.job-title {
+    margin-top: -1.5em;
+}
+
+.header-links {
+    margin-top: -.8em;
+}
+
 /*************************/
-/* Star Wars Theme Items */
+/* Star Wars Theme */
 /*************************/
 .star-wars-opening {
     font-size: 10vh;
     color: black;
     line-height: 22px;
     text-align: center;
+    height: 100vh;
+    width: 100vw;
 }
 
 .greeting {
+    max-width: 1420px;
     margin-top: 25vh;
-    font-size: 80%;
+    font-size: 8vw;
 }
 
 .rogue-one img {
     z-index: 1;
     position: absolute;
     top: -9999px;
-    animation: rogue-one-fly-in 4s normal 1s forwards;
-    max-height: 4em;
-    height: 90vw;
+    animation: rogue-one-fly-in 4s normal 0s forwards;
+    height: 4em;
 }
 
-.fathead img:first-child {
+.fathead img {
     position: absolute;
     top: -9999px;
-    animation: fathead-fly-in-1 4s normal 2s forwards;
-    max-height: 1em;
-    height: 40vw;
+    animation: fathead-fly-in-1 4s normal 1s forwards;
+    height: 1em;
 }
 
 .falcon img {
     position: absolute;
     top: -9999px;
-    animation: falcon-fly-in 4s normal 2.5s forwards;
-    max-height: 2em;
-    height: 40vw;
+    animation: falcon-fly-in 4s normal 1.5s forwards;
+    height: 2em;
 }
 
 .venator img {
     position: absolute;
     top: -9999px;
-    animation: venator-fly-in 4s normal 3s forwards;
-    max-height: 2em;
-    height: 40vw;
+    animation: venator-fly-in 4s normal 2s forwards;
+    height: 2em;
 }
 
 .xwing img {
     position: absolute;
     top: -9999px;
-    animation: xwing-fly-in 4s normal 5.5s forwards;
+    animation: xwing-fly-in 5s normal 4.5s forwards;
     height: 1em;
 }
 
@@ -206,7 +215,7 @@ header img {
     }
 }
 
-@keyframes xwing-fly-in {
+    @keyframes xwing-fly-in {
     0% {
         height: 10vh;
         top: 0;
@@ -214,17 +223,19 @@ header img {
     }
 
     25% {
+        rotate: -30deg;
         height: 30vh;
-        top: 10vh;
-        right: 70vw;
-    }
-
-    50% {
         top: 20vh;
-        rotate: 360deg;
+        right: 60vw;
     }
 
-    70% {
+    65% {
+        rotate: 90deg;
+        top: 20vh;
+        right: -100vw;
+    }
+
+    66% {
         rotate: 0deg;
     }
 
@@ -236,8 +247,8 @@ header img {
     }
 }
 
-@keyframes welcome {
-    to {
-        opacity: 100%;
-    }
+/****************************************/
+/* MEDIA QUERIES for Responsive Screens */
+/****************************************/
+@media screen and (min-width: 1200px) {
 }
