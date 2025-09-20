@@ -44,46 +44,95 @@ header img {
 #project {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1em;
-    justify-items: center;
+    justify-items: space-between;
 }
 
 /* 1vw is 1% of viewport width. For example, 20vw of 1420px max-width (body) is 284px. */
 /* Max-width on child container is enforced, I can't seem to figure out why .project-box stretches past 1420px */
-
 .project-box {
-    box-shadow: 0px 0px 10px rgb(104, 248, 76);
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    height: 330px;
+    width: 100%;
 }
 
-.project-box-rotate { /* This class will be added by JavaScript's DOM API by User Click.  User will reads project description with links to projects. */
+.front-box, .back-box { /* Overlay back-box with front-box */
+    grid-column: 1 / -1;
+    grid-row: 1 / 1;
+}
+
+.front-box { /* Bring front-box to front using cartesian system (x, y, z) */
+    box-shadow: 0px 0px 10px rgb(104, 248, 76);
+    z-index: 1;
+}
+
+.front-box:hover {
+    box-shadow: 0px 0px 10px rgb(255, 63, 63);
     animation: boxRotate 1s normal 0s forwards;
 }
 
-.project-name {
+.project-box .back-box { /* Back of box content are flipped horiozntally, opactiy is set at 0% so it's not visible to user until the box rotates, scaling up opacity to 100% */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 1em 0 1em;
+    font-size: 16px;
+    font-weight: 700;
+    background: rgba(102, 102, 102, 0.8);
+
+    box-shadow: 0px 0px 10px rgb(104, 248, 76);
+    max-height: 330px;
+    overflow: hidden;
+
+    display: none;
+}
+
+.project-box .back-box:hover {
+    box-shadow: 0px 0px 10px rgb(255, 63, 63);
+}
+
+.project-box .back-box a {
+    font-size: large;
+    color: rgb(57, 185, 32);
+    text-decoration: underline;
+}
+
+.rotate {
+    /* This class will be added by JavaScript's DOM API by User Click.  User will clicks box, project box rotates, user reads project description with links to projects. */
+    animation: boxRotate 1s normal 0s forwards;
+}
+
+.project-box .front-box .project-name {
     margin-top: -.5em;
     font-size: .8em;
     text-align: center;
     padding: 1em 0 0 0;
 }
 
-.project-box:hover {
-    box-shadow: 0px 0px 10px rgb(255, 63, 63);
-}
-
-
-.project-box .project-img {
-    max-width: 420px;
-    height: auto;
-}
-
-.project-box .project-img img {
+.project-box .front-box .project-img img {
     max-width: 100%;
+}
+
+.project-box .back-box p:nth-child(2) {
+    justify-self: end;
+}
+
+.project-box .back-box p:nth-child(3) {
+    overflow: hidden;
+    grid-column: 1 / -1;
+}
+
+.project-box .back-box p:nth-child(4) {
+    align-self: end;
+    justify-self: end;
+    grid-column: 1 / -1;
 }
 
 /****************************************/
 /*      CSS ANIMATIONS/KEYFRAMES        */
 /****************************************/
-@keyframes projectBoxShadow { /* https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow */
+@keyframes projectBoxShadow {
+    /* https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow */
 
 }
 
@@ -93,15 +142,7 @@ header img {
     }
 }
 
-@keyframes boxRotateReverse {
-    to {
-        transform: rotateY(-180deg);
-    }
-}
-
 /********************************************/
 /* MEDIA QUERIES for Mobile, Tablet Screens */
 /********************************************/
-@media screen and (max-width: 1420px) {
-
-}
+@media screen and (max-width: 1420px) {}
