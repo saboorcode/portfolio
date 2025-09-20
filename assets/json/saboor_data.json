@@ -1,0 +1,25 @@
+{
+    "projects": [
+        {
+            "projectName": "Star Wars Animation",
+            "projectDesc": "",
+            "techStack": "CSS",
+            "image": 
+                "/assets/projects/starwarsanimation.gif"
+        }, 
+        {
+            "projectName": "Nur Kitchen",
+            "projectDesc": "Restaurant style landing page for a local catering service that includes a dynamic menu built with JavaScript and DOM API, designed to present multiple price and food options with a strong focus on user experience. Using HTML and CSS with grid properties, I created an 'About the Business' section, an 'Our Services' section, and a masonry-style food gallery of food pictures that I took myself. I ensured that the web page is fully image optimized for fast page loading and responsive to display well on small screens like an iPhone 5.",
+            "techStack": "HTML, CSS, JS",
+            "image": 
+                "/assets/projects/nurkitchen.png" 
+        },
+                {
+            "projectName": "HD Requester",
+            "projectDesc": "",
+            "techStack": "JS, SQLite, Python, Argon2, Flask",
+            "image": 
+                "/assets/projects/hdr.png"
+        }
+    ]
+}

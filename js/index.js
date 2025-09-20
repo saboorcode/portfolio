@@ -5,7 +5,7 @@
 /*******************/
 let userSkipTheme = false;
 
-// User clicked on web page to skip the Star Wars animation. Invoke "location" path change.
+// User clicked on web page to skip the Star Wars animation. Invoke "location" path change. Go to portfolio.html
 document.addEventListener("click", () => {
     if (!userSkipTheme) {
         userSkipTheme = true;

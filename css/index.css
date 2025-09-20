@@ -245,5 +245,8 @@ html {
 /****************************************/
 /* MEDIA QUERIES for Responsive Screens */
 /****************************************/
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1420px) {
+    .greeting {
+        font-size: 110px;
+    }
 }

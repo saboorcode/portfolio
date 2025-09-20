@@ -1,15 +1,15 @@
 body {
     margin: 0 auto;
+    padding: 0 1em 0 1em;
     color: rgb(255, 255, 255);
     font-family: system-ui;
     /* Good for responsive. Adjusts dynamically rather than resize font manually per screen type which can gets messy - https://clamp.font-size.app/ */
     font-size: clamp(0.625rem, -0.0112rem + 3.3929vw, 2rem);
-    overflow: hidden;
     background: linear-gradient(rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.70)), url("/assets/bg/xwing.png") no-repeat center center / cover fixed;
     background-attachment: fixed;
     max-width: 1420px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+
 
 /*
 html {
@@ -21,6 +21,7 @@ html {
 
 a {
     text-decoration: none;
+    color: rgb(255, 255, 255);
 }
 
 header {
@@ -32,11 +33,6 @@ header img {
     height: 1em;
 }
 
-.portfolio {
-    height: 90vh;
-    display: none;
-}
-
 .job-title {
     margin-top: -1.5em;
 }
@@ -45,8 +41,67 @@ header img {
     margin-top: -.8em;
 }
 
+#project {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
+    justify-items: center;
+}
+
+/* 1vw is 1% of viewport width. For example, 20vw of 1420px max-width (body) is 284px. */
+/* Max-width on child container is enforced, I can't seem to figure out why .project-box stretches past 1420px */
+
+.project-box {
+    box-shadow: 0px 0px 10px rgb(104, 248, 76);
+}
+
+.project-box-rotate { /* This class will be added by JavaScript's DOM API by User Click.  User will reads project description with links to projects. */
+    animation: boxRotate 1s normal 0s forwards;
+}
+
+.project-name {
+    margin-top: -.5em;
+    font-size: .8em;
+    text-align: center;
+    padding: 1em 0 0 0;
+}
+
+.project-box:hover {
+    box-shadow: 0px 0px 10px rgb(255, 63, 63);
+}
+
+
+.project-box .project-img {
+    max-width: 420px;
+    height: auto;
+}
+
+.project-box .project-img img {
+    max-width: 100%;
+}
+
 /****************************************/
-/* MEDIA QUERIES for Responsive Screens */
+/*      CSS ANIMATIONS/KEYFRAMES        */
 /****************************************/
-@media screen and (min-width: 1200px) {
+@keyframes projectBoxShadow { /* https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow */
+
+}
+
+@keyframes boxRotate {
+    to {
+        transform: rotateY(180deg);
+    }
+}
+
+@keyframes boxRotateReverse {
+    to {
+        transform: rotateY(-180deg);
+    }
+}
+
+/********************************************/
+/* MEDIA QUERIES for Mobile, Tablet Screens */
+/********************************************/
+@media screen and (max-width: 1420px) {
+
 }
