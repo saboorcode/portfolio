@@ -74,97 +74,74 @@ async function generateProjectSection() { // Defined async function to resolve a
     for (const entry of projectData.projects){
             //console.log(entry);
 
-            /* 
-                <div class="project-box">
-                <div class="front-box">
-                    <div class="project-img"><img src="/assets/projects/hdr.png"></div>
-                    <p class="project-name">HD Requester</p>
-                </div>
-
-                <div class="back-box">
-                    <p>Project Name</p>
-
-                    <p>HTML, CSS, JS</p>
-
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque vero magni molestias id velit
-                        quibusdam esse eligendi itaque consectetur omnis, ut assumenda similique quasi accusamus,
-                        temporibus
-                        nostrum iusto facilis? Animi praesentium eaque repudiandae iure recusandae libero rem fugiat
-                        porro
-                        quidem. Aliquid a blanditiis autem ab suscipit corrupti quas, sunt consectetur.</p>
-
-                    <p>
-                        <a href="" target="_blank">Source Code</a>
-                        <a href="" target="_blank">Website</a>
-                    </p>
-                </div>
-            </div>
-            */
-
             /* This was a lot but I did this as DOM API practices */
-            // Creating references and use DOM API to create project boxes. Add the project boxes to HTML document.
+            // Creating references and use DOM API to create project cards. Add the project cards to HTML document.
             //console.log(entry)
-            const projectBox = document.createElement("div");
-            const projectFrontBox = document.createElement("div");
-            const projectBackBox = document.createElement("div");
+            const projectCard = document.createElement("div");
+            const projectFrontCard = document.createElement("div");
+            const projectBackCard = document.createElement("div");
             const projectImgDiv = document.createElement("div");
             const projectImg = document.createElement("img");
             const projectName = document.createElement("p");
 
-            const projectBackBoxProjectName = document.createElement("p");
-            const projectBackBoxTechStack = document.createElement("p");
-            const projectBackBoxProjectDesc = document.createElement("p");
-            const projectBackBoxProjectLinks = document.createElement("p");
+            const projectBackCardProjectName = document.createElement("p");
+            const projectBackCardTechStack = document.createElement("p");
+            const projectBackCardProjectDesc = document.createElement("p");
+            const projectBackCardProjectLinks = document.createElement("p");
 
-            const projectBoxLink = document.createElement("a");
-            projectBoxLink.textContent = "Link";
+            const projectCardLink = document.createElement("a");
+            projectCardLink.textContent = "Link";
 
-            projectBoxLink.setAttribute("href", entry.links[0]); // https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute
-            projectBoxLink.setAttribute("target", "_blank");
+            projectCardLink.setAttribute("href", entry.links[0]); // https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute
+            projectCardLink.setAttribute("target", "_blank");
             projectImg.setAttribute("src", entry.image);
 
-            projectBox.classList.add("project-box"); // .project-box class is defined in portfolio.css with specific style rules. Same as below.
-            projectFrontBox.classList.add("front-box");
-            projectBackBox.classList.add("back-box");
+            projectCard.classList.add("project-card"); // .project-card class is defined in portfolio.css with specific style rules. Same as below.
+            projectFrontCard.classList.add("front-card");
+            projectBackCard.classList.add("back-card");
             projectImgDiv.classList.add("project-img");
             projectName.classList.add("project-name");
 
             projectName.textContent = entry.projectName;
 
-            projectBackBoxProjectName.textContent = entry.projectName;
-            projectBackBoxTechStack.textContent = entry.techStack;
-            projectBackBoxProjectDesc.textContent = entry.projectDesc;
+            projectBackCardProjectName.textContent = entry.projectName;
+            projectBackCardTechStack.textContent = entry.techStack;
+            projectBackCardProjectDesc.textContent = entry.projectDesc;
 
             // Tying it together. Appending children elements to its parent.
-            projectBackBoxProjectLinks.append(projectBoxLink);
+            projectBackCardProjectLinks.append(projectCardLink);
             projectImgDiv.append(projectImg);
 
-            projectFrontBox.append(projectImgDiv, projectName);
-            projectBackBox.append(projectBackBoxProjectName, projectBackBoxTechStack, projectBackBoxProjectDesc, projectBackBoxProjectLinks);
+            projectFrontCard.append(projectImgDiv, projectName);
+            projectBackCard.append(projectBackCardProjectName, projectBackCardTechStack, projectBackCardProjectDesc, projectBackCardProjectLinks);
 
-            projectBox.append(projectFrontBox, projectBackBox);
+            projectCard.append(projectFrontCard, projectBackCard);
 
-            projectContainer.append(projectBox);
+            projectContainer.append(projectCard);
     }
 
-    function rotateProjectBoxAndDisplayProjDesc(){
-        const projectBoxRef = document.querySelectorAll('.project-box');
+    function flipProjectCard(){ /* This can be done using pure CSS and hover psuedo class, however I elected to use user's click event function for better interaction */
+        const projectCards = document.querySelectorAll('.project-card');
 
-        for (const projectBoxRefEle of projectBoxRef){
-            //console.log(projectBoxRefEle)
+        for (const projectCardsRef of projectCards){
+            projectCardsRef.addEventListener("click", (event) => {// An event is triggered by user's click and this gives us a specific project card that user clicked on.
+                const projectCard = event.currentTarget;
+                let projectCardFlipped = projectCard.classList.value.includes("flipped") ? true : false;
+                
+                if (!projectCardFlipped){
+                    projectCard.classList.add('project-card-flip', 'flipped');
 
-            projectBoxRefEle.addEventListener("click", (event) => {// An event is triggered by user's click and this gives us a specific project box that user clicked on.
-                const projectBoxClicked = event.currentTarget;
-                const projectBoxRotatedBoolean = projectBoxClicked.classList.value.includes('rotated');
-
-                if (!projectBoxRotatedBoolean){ // Check if project box has rotated - take actions by user's click
-                    projectBoxClicked.classList.add('project-box-rotate', 'rotated');
+                    projectCard.querySelector('.front-card').classList.add('project-front-card-hide');
+                    projectCard.querySelector('.back-card').classList.add('project-back-card-show');
                 } else {
-                    projectBoxClicked.classList.remove('project-box-rotate', 'rotated');
+                    projectCard.classList.remove('project-card-flip', 'flipped');
+
+                    projectCard.querySelector('.front-card').classList.remove('project-front-card-hide');
+                    projectCard.querySelector('.back-card').classList.remove('project-back-card-show');
                 }
             });
         }
     }
 
-    //rotateProjectBoxAndDisplayProjDesc();
+    flipProjectCard();
 }
