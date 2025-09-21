@@ -2,24 +2,45 @@
     "projects": [
         {
             "projectName": "Star Wars Animation",
-            "projectDesc": "",
+            "projectDesc": "This is my animation project, my favorite one, were created by accident! I originally designed a stroked STAR WARS text on space background, then decided to add starfighter images to the web page in CodePen. I experimented with animation properties, timings, and delays on starfighters, after a lot of trial and error while building on top of my creativity. This animation project helped me become very comfortable with pure CSS.",
             "techStack": "CSS",
             "image": "/assets/projects/starwarsanimation.gif",
-            "links": ["https://codepen.io/Saboor-the-bold/full/yyYwMZq"]
+            "link": "https://codepen.io/Saboor-the-bold/full/yyYwMZq"
         },
         {
             "projectName": "Nur Kitchen",
-            "projectDesc": "Restaurant style landing page for a local catering service that includes a dynamic menu built with JavaScript and DOM API, designed to present multiple price and food options with a strong focus on user experience. Using HTML and CSS with grid properties, I created an 'About the Business' section, an 'Our Services' section, and a masonry-style food gallery of food pictures that I took myself. I ensured that the web page is fully image optimized for fast page loading and responsive to display well on small screens like an iPhone 5.",
+            "projectDesc": "Restaurant style landing page for a local catering service that includes a dynamic menu built with JavaScript, designed to present many price and food options with a strong focus on user experience. I created an 'About the Business' section, an 'Our Services' section, and a food gallery of photos I took using CSS GRID. I ensured that the web page is fully image optimized for fast page loading and responsive to display well on small screens like an iPhone 5.",
             "techStack": "HTML, CSS, JS",
             "image": "/assets/projects/nurkitchen.png",
-            "links": ["https://nooreats.com/"]
+            "link": "https://nooreats.com/"
         },
         {
-            "projectName": "HD Requester",
-            "projectDesc": "",
+            "projectName": "HD Requester (Senior Project)",
+            "projectDesc": "HD Requester is a senior project as part of a Sac State course. It is a secure computer parts management system designed to handle check-in and check-out of parts within a secured area at an e-waste facility. My role in this project was to implement a pagination system for the inventory table and to write Selenium testing scripts for checking in/out parts, inventory part requests, add/remove items, and search functionality.",
             "techStack": "JS, SQLite, Python, Argon2, Flask",
             "image": "/assets/projects/hdr.png",
-            "links": ["https://github.com/saboorcode/HD-Requester"]
+            "link": "https://github.com/saboorcode/HD-Requester"
+        },
+        {
+            "projectName": "Foundit (Hackfest)",
+            "projectDesc": "",
+            "techStack": "Svelte, Supabase, Node.js",
+            "image": "/assets/projects/foundit.png",
+            "link": "https://devpost.com/software/foundit-xj30l1"
+        },
+        {
+            "projectName": "Supabase Chrome Extension",
+            "projectDesc": "There are Chrome extensions that use Firebase for user authentication and database operations; however, I couldn’t find a Supabase-based version, so I created my own. I used Google Cloud Credentials and Supabase to set up an authentication flow, enabling database operations directly within the Chrome extension. The extension is built following Google’s developer guide and is implemented in JavaScript.",
+            "techStack": "JS, Supabase",
+            "image": "/assets/projects/supalogin.png",
+            "link": "https://github.com/saboorcode/Social-Login-Chrome-Extension-Supabase"
+        },
+        {
+            "projectName": "GPT Dialogues Extractor",
+            "projectDesc": "",
+            "techStack": "JS, Python",
+            "image": "/assets/projects/gpt-convo-logger.png",
+            "link": "https://github.com/saboorcode/gpt-dialogues-extractor"
         }
     ]
 }

@@ -1,0 +1,59 @@
+/*****************************************/
+/*          CSS Little Game              */
+/*****************************************/
+
+/* Photo by Kindel Media: https://www.pexels.com/photo/grass-on-the-desert-7527853/ */
+
+#little-game {
+    margin-top: -1em;
+}
+
+.little-game {
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("/assets/bg/desert.png") no-repeat center center / cover;
+    min-height: 60vh; /* rid of this height property later, let content determine height */
+    box-shadow: 0px 0px 20px rgb(255, 0, 0);
+}
+
+.gunsight img {
+    max-width: 10%;
+    animation: idle 2s alternate 0s infinite;
+}
+
+.little-game:hover {
+    cursor: crosshair; /* Defaults to crosshair "+" cursor if custom cursor stopped working on hover */
+}
+
+.little-game:hover .gunsight { /* hide crosshair child element when parent container is hovered */
+    display: none;
+}
+
+.total-score {
+    margin: .5em 1em 0 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+/****************************************/
+/*      CSS ANIMATIONS/KEYFRAMES        */
+/****************************************/
+@keyframes idle {
+    /* https://developer.mozilla.org/en-US/docs/Web/CSS/card-shadow */
+    from {
+        position: absolute;
+        top: 30%;
+        left: 20%;
+    }
+
+    to {
+        position: absolute;
+        top: 30%;
+        left: 70%;
+    }
+}
+
+/********************************************/
+/* MEDIA QUERIES for Mobile, Tablet Screens */
+/********************************************/
+@media screen and (max-width: 1420px) {}

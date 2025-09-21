@@ -68,7 +68,7 @@ async function generateProjectSection() { // Defined async function to resolve a
 
     const projectData = await getJSON(); // Retrieve project data from "saboor_data.json" file then generate project section below this line.
 
-    const projectContainer = document.getElementById("project");
+    const projectContainer = document.getElementById("projects");
 
     // Iterates through project entries and render them to HTML document.
     for (const entry of projectData.projects){
@@ -83,6 +83,7 @@ async function generateProjectSection() { // Defined async function to resolve a
             const projectImgDiv = document.createElement("div");
             const projectImg = document.createElement("img");
             const projectName = document.createElement("p");
+            const externalLink = document.createElement("img");
 
             const projectBackCardProjectName = document.createElement("p");
             const projectBackCardTechStack = document.createElement("p");
@@ -90,11 +91,15 @@ async function generateProjectSection() { // Defined async function to resolve a
             const projectBackCardProjectLinks = document.createElement("p");
 
             const projectCardLink = document.createElement("a");
-            projectCardLink.textContent = "Link";
 
-            projectCardLink.setAttribute("href", entry.links[0]); // https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute
+            externalLink.src = "/assets/icons/external-link.png";
+            projectCardLink.append(externalLink);
+
+            projectCardLink.setAttribute("href", entry.link); // https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute
             projectCardLink.setAttribute("target", "_blank");
             projectImg.setAttribute("src", entry.image);
+
+            //projectBackCard.style.background = `linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("${entry.image}") no-repeat center center / cover fixed`
 
             projectCard.classList.add("project-card"); // .project-card class is defined in portfolio.css with specific style rules. Same as below.
             projectFrontCard.classList.add("front-card");
@@ -128,7 +133,7 @@ async function generateProjectSection() { // Defined async function to resolve a
                 const projectCard = event.currentTarget;
                 let projectCardFlipped = projectCard.classList.value.includes("flipped") ? true : false;
                 
-                if (!projectCardFlipped){
+                if (!projectCardFlipped){ // Checks if project card has been flipped.  Add/remove custom CSS classes that animates the flip and make front or back face visible.
                     projectCard.classList.add('project-card-flip', 'flipped');
 
                     projectCard.querySelector('.front-card').classList.add('project-front-card-hide');

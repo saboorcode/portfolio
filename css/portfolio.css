@@ -8,8 +8,8 @@ body {
     background: linear-gradient(rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.70)), url("/assets/bg/xwing.png") no-repeat center center / cover fixed;
     background-attachment: fixed;
     max-width: 1420px;
+    text-align: center;
 }
-
 
 /*
 html {
@@ -19,6 +19,11 @@ html {
 
 /* 1vw is 1% of viewport width. For example, 8vw of 1000px is 80px. */
 
+footer {
+    margin-top: 5em;
+    font-size: 16px;
+}
+
 a {
     text-decoration: none;
     color: rgb(255, 255, 255);
@@ -26,8 +31,22 @@ a {
 
 header {
     white-space: nowrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
 }
 
+header div:first-child {
+    text-align: left;
+}
+
+header ul {
+    margin-top: 2.5em;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+}
 
 header img {
     height: 1em;
@@ -41,10 +60,10 @@ header img {
     margin-top: -.8em;
 }
 
-#project {
+.project {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    justify-items: space-between;
+    justify-items: center;
 }
 
 /* 1vw is 1% of viewport width. For example, 20vw of 1420px max-width (body) is 284px. */
@@ -52,14 +71,18 @@ header img {
 .project-card {
     display: grid;
     grid-template-columns: 1fr;
+    grid-template-rows: auto;
     max-width: 420px;
     height: 330px;
     width: 100%;
+    margin-bottom: 2em;
+    text-align: left;
 }
 
+/*
 .project-card:hover {
     box-shadow: 0px 0px 20px rgb(255, 0, 0);
-}
+}*/
 
 .project-card .front-card,
 .project-card .back-card {
@@ -81,13 +104,20 @@ header img {
     transform: rotateY(180deg);
     padding: 0 1em 0 1em;
     font-size: 16px;
-    font-weight: 700;
     transform: rotateY(180deg);
-
-    box-shadow: 0px 0px 10px rgb(104, 248, 76);
+    box-shadow: 0px 0px 10px rgb(255, 0, 0);
     max-height: 330px;
-    overflow: hidden;
     opacity: 0%;
+    overflow-y: auto;
+    background: rgba(0, 0, 0, 0.60);
+}
+
+.project-card .front-card:hover {
+    box-shadow: 0px 0px 20px rgb(104, 248, 76);
+}
+
+.project-card .back-card:hover {
+    box-shadow: 0px 0px 20px rgb(255, 0, 0);
 }
 
 .project-card .back-card a {
@@ -107,12 +137,17 @@ header img {
     max-width: 100%;
 }
 
+.project-card .back-card p:nth-child(1), .project-card .back-card p:nth-child(2) {
+    font-weight: 700;
+}
+
 .project-card .back-card p:nth-child(2) {
     justify-self: end;
+    white-space: pre; /* https://developer.mozilla.org/en-US/docs/Web/CSS/white-space */
 }
 
 .project-card .back-card p:nth-child(3) {
-    overflow: hidden;
+    margin-top: -5px;
     grid-column: 1 / -1;
 }
 
@@ -120,6 +155,11 @@ header img {
     align-self: end;
     justify-self: end;
     grid-column: 1 / -1;
+
+}
+
+.project-card .back-card p:nth-child(4) img {
+    height: 1.5em;
 }
 
 /* Flips parent card (this will rotates front and back cards at the same time). Targets front card when parent card is flipped, hides front card and makes back card visible
@@ -144,19 +184,17 @@ PURE CSS CARD FLIP EFFECT
 }
 
 .project-front-card-hide {
-    animation: hideCard 1s forwards;
+    animation: hideCard .7s forwards;
 }
 
 .project-back-card-show {
     animation: showCard 1s forwards;
 }
 
-/*******************************************************/
-
 /****************************************/
 /*      CSS ANIMATIONS/KEYFRAMES        */
 /****************************************/
-@keyframes projectCardShadow {
+@keyframes hello {
     /* https://developer.mozilla.org/en-US/docs/Web/CSS/card-shadow */
 
 }
@@ -178,7 +216,6 @@ PURE CSS CARD FLIP EFFECT
 @keyframes showCard {
     to {
         opacity: 100%;
-        background: rgba(0, 0, 0, 0.418);
     }
 }
 
