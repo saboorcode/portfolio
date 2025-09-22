@@ -38,6 +38,12 @@
     /*animation: character-walk 3s alternate linear 0s infinite;*/
 }
 
+.yoda { /* Same as .character expect more styles so baby yoda is more noticeable to user/gamer */
+    box-shadow: 0px 0px 20px rgb(104, 248, 76);
+    border-radius: 100%;
+    z-index: 0;
+}
+
 .little-game:hover {
     cursor: crosshair; /* Defaults to crosshair "+" cursor if custom cursor stopped working on hover */
 }
