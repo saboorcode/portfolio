@@ -10,14 +10,32 @@
 
 .little-game {
     position: relative;
-    background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("/assets/bg/desert.png") no-repeat center center / cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("/game-assets/desert.png") no-repeat center center / cover;
     min-height: 60vh; /* rid of this height property later, let content determine height */
     box-shadow: 0px 0px 20px rgb(255, 0, 0);
+    overflow: hidden;
 }
 
-.gunsight img {
-    max-width: 10%;
-    animation: idle 2s alternate 0s infinite;
+.gunsight { /* I set image at 10vw (10% of viewport view) within game screen so it scales well with screen but caps out at 100px because it'll look too big on ultrawide monitor */
+    position: absolute;
+    top: 30%;
+    width: 10vw;
+    max-width: 100px;
+    animation: idle 1.5s alternate 0s linear infinite;
+    z-index: 10;
+}
+
+/* I set image at 10vw (10% of viewport view) within game screen so it scales well with screen but caps out at 100px because it'll look too big on ultrawide monitor */
+/* Position is positioned absolutely in relative to parent container.  This way, I can position the character randomly with top and left propreties using DOM scripting in JS */
+.character {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15vw;
+    max-width: 100px;
+    max-height: 100px;
+    z-index: 1;
+    /*animation: character-walk 3s alternate linear 0s infinite;*/
 }
 
 .little-game:hover {
@@ -33,7 +51,15 @@
     position: absolute;
     top: 0;
     right: 0;
+    z-index: 10;
 }
+
+/*
+.character {
+    width: 10vw;
+    max-width: 100px;
+}
+*/
 
 /****************************************/
 /*      CSS ANIMATIONS/KEYFRAMES        */
@@ -41,15 +67,22 @@
 @keyframes idle {
     /* https://developer.mozilla.org/en-US/docs/Web/CSS/card-shadow */
     from {
-        position: absolute;
-        top: 30%;
         left: 20%;
     }
 
     to {
-        position: absolute;
-        top: 30%;
         left: 70%;
+    }
+}
+
+@keyframes character-walk {
+    /* https://developer.mozilla.org/en-US/docs/Web/CSS/card-shadow */
+    0% {
+        left: 0;
+    }
+
+    100% {
+        left: 90%;
     }
 }
 

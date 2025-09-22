@@ -86,11 +86,13 @@ html {
     top: -1em;
     right: 0;
     background: red;
-    color: #eede46;
+    color: rgb(226, 226, 226);
     width: fit-content;
     font-size: 12px;
     padding: 5px;
-    animation: skipOptionPara 4s normal 2s forwards;
+    animation: skipOptionPara 4s normal 3s forwards;
+    z-index: 10;
+    opacity: 95%;
 }
 
 /******************/

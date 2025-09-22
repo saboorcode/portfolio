@@ -18,6 +18,9 @@ html {
 */
 
 /* 1vw is 1% of viewport width. For example, 8vw of 1000px is 80px. */
+#projects {
+    display: none;
+}
 
 footer {
     margin-top: 5em;
