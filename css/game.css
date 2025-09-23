@@ -29,19 +29,20 @@
 /* Position is positioned absolutely in relative to parent container.  This way, I can position the character randomly with top and left propreties using DOM scripting in JS */
 .character {
     position: absolute;
-    top: 0;
-    left: 0;
+    /*top: 0;
+    left: 0;*/
     width: 15vw;
     max-width: 100px;
     max-height: 100px;
     z-index: 1;
-    /*animation: character-walk 3s alternate linear 0s infinite;*/
+    animation: character-walk 2s alternate linear 0s infinite;
 }
 
 .yoda { /* Same as .character expect more styles so baby yoda is more noticeable to user/gamer */
-    box-shadow: 0px 0px 20px rgb(104, 248, 76);
+    box-shadow: 0px 0px 10px rgb(104, 248, 76);
     border-radius: 100%;
     z-index: 0;
+    animation: yoda 1s alternate linear 0s infinite;
 }
 
 .little-game:hover {
@@ -83,13 +84,17 @@
 
 @keyframes character-walk {
     /* https://developer.mozilla.org/en-US/docs/Web/CSS/card-shadow */
-    0% {
-        left: 0;
+    to {
+        scale: 1.2;
+        transform: translateY(5%);
     }
+}
 
-    100% {
-        left: 90%;
+@keyframes yoda {
+    to {
+box-shadow: 0px 0px 40px rgb(104, 248, 76);
     }
+    
 }
 
 /********************************************/

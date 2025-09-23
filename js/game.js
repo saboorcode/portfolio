@@ -9,10 +9,15 @@ function game() {
     placeCharacterOnGameScreenRandomly();
     shootCharacter()
 
+    function generateGameScreen(){ // Necessary function for a game restart
+
+    }
+
     function placeCharacterOnGameScreenRandomly() {
         // Create references
         const gameScreen = document.querySelector(".little-game");
 
+        // A collection of characters (image files from assets) I want to print on game screen randomly
         const characters = { // In case I want to retrieve specific character
             jabba: "/game-assets/characters/jabba.png",
             jarjar: "/game-assets/characters/jarjar.png",
@@ -33,7 +38,7 @@ function game() {
             //console.log(yoda);
             // Create character reference
             const character = document.createElement("img");
-            character.classList.add("character"); // specific styles
+            character.classList.add("character"); // specific character styles
 
             character.src = yoda ? yoda : generateRandomCharacter(); // Ternary operator to define character either random "creature" or yoda.  Yoda is added to the game once
 
@@ -68,12 +73,15 @@ function game() {
         const gameScreen = document.querySelector(".little-game");
         //console.log(gameScreen)
 
+        // Remove character that's clicked on game screen
         gameScreen.addEventListener("click", (event) => { // "event" is triggered by user's actions like clicking on character
+            const idleCrosshair = document.querySelector(".gunsight") ? document.querySelector(".gunsight").remove() : ""; // Remove gunsight idle animation when user starts playing
+
             const yoda = document.querySelector(".yoda");
             const character = event.target; // event.target is just like a reference that we can apply DOM methods on
 
             if (character.classList.value.includes("character")) { // This prevent deleting actual game, this ensures element clicked on game screen has a class ".character" removing actual character from game instead.
-                if (character.classList.value.includes("yoda")){ // Check if character element has ".yoda" distinct class, if selected character is baby yoda, then execute necessary logic.
+                if (character.classList.value.includes("yoda")){ // Check if character clicked has ".yoda" distinct class, if selected character is baby yoda, then execute necessary logic.
                     end();
                 } else {
 
@@ -85,6 +93,9 @@ function game() {
     }
 }
 
-function end(){
-    alert("Game Over!!!")
+function end(){ // Adds parameter - if yoda was shot, display Defeated screen.  Winner screen otherwise.
+    alert("Game Over!!!");
+
+    // Prompts user for a game restart
+    game();
 }
