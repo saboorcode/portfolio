@@ -9,7 +9,7 @@
         },
         {
             "projectName": "Nur Kitchen",
-            "projectDesc": "Restaurant style landing page for a local catering service that includes a dynamic menu built with JavaScript, designed to present many price and food options with a strong focus on user experience. I created an 'About the Business' section, an 'Our Services' section, and a food gallery of photos I took using CSS GRID. I ensured that the web page is fully image optimized for fast page loading and responsive to display well on small screens like an iPhone 5.",
+            "projectDesc": "Restaurant style landing page for a catering service that includes a dynamic menu built with JavaScript, designed to present price and food options with a strong focus on user experience. I created an 'About the Business' section, an 'Our Services' section, and a masonry-style food gallery of photos I took using CSS GRID. I ensured that the web page is fully image optimized for fast page loading and responsive to display well on small screens like an iPhone 5.",
             "techStack": "HTML, CSS, JS",
             "image": "/assets/projects/nurkitchen.png",
             "link": "https://nooreats.com/"
