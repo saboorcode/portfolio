@@ -2,16 +2,24 @@
 /*              Little Game              */
 /*****************************************/
 
-// Functions are hoisted.  Interpreter put declartions at top prior to execution/invoke.
-game();
+// Functions are hoisted.  Interpreter put declartions at top prior to execution/invoke. MDN Source
+let narrativeInProgress = false; // Pause type of variable - This prevents from player from skipping narrative stories in progress and ending game too early.
+const narrativeInProg = document.createElement("p");
+narrativeInProg.classList.add("narrative-progress");
+narrativeInProg.textContent = "narratives in progress";
+narrativeInProg.style.display = "none";
+
+game(); // Start game
 
 function game() {
     generateGameScreen();
     spawnCharactersRandomly();
-    shootCharacter();
+    shootCharacterAndNarrative()
 
-    function generateGameScreen(){ // Necessary function for a game restart
+    function generateGameScreen() { // Necessary function for a game restart
         const gameScreenId = document.getElementById("little-game");
+        const narrativePara = document.createElement("p");
+        narrativePara.classList.add("narrative-p"); // Added class to style in CSS later
 
         // Remove Previous Game Screen along with old characters if necessary, for a game restart
         document.querySelector(".little-game") ? document.querySelector(".little-game").remove() : null;
@@ -19,14 +27,13 @@ function game() {
         const gameScreen = document.createElement("div");
         gameScreen.classList.add("little-game");
 
-
-        // <img src="/game-assets/gunsight.png" alt="" class="gunsight">
-
         const img = document.createElement("img");
         img.src = "/game-assets/gunsight.png";
         img.classList.add("gunsight");
 
         gameScreen.append(img);
+        gameScreen.append(narrativePara);
+        gameScreen.append(narrativeInProg);
 
         gameScreenId.append(gameScreen);
     }
@@ -88,59 +95,111 @@ function game() {
 
     /**********************************************************************************************************************************************************************************/
 
-    // Depending on which character are shot, execute logic.  If Baby Yoda (hostage) are shot by mistake, end game.
-    function shootCharacter() {
-        // Create reference to game screen
+    // Shoot Character & Narrative
+    // Depending which character are shot, execute necessary logic.  Example, Baby Yoda (hostage) are shot by mistake, end game.
+    function shootCharacterAndNarrative() {
+        const narrative = { // A collection of narrative quotes as hostage or player I found online - CSGO Forum
+            you: ["Baby Yoda!!! NOOOOOOOO!!!!!!", "I'll save you, Baby Yoda!", "Of course! Let's get the hell outta here!"],
+            babyYoda: ["Oh, finally you're here. (whispering) You've gotta get me outta here. (whispering)", "You're going to save me, right?", "Oh I can't believe it's over! Thank you!!"],
+            captors: ["GRUMBLES", "YELLS"]
+        }
+
+        const narrativeP = document.querySelector(".narrative-p"); // .narrative-p element (no content) is generated and appended to document in generateGameScreen() eariler
+        //narrativeP.textContent = "You: " + narrative.you[0];
+        narrativeP.style.display = "none";
+
         const gameScreen = document.querySelector(".little-game");
-        //console.log(gameScreen)
+        let clickTotal = 0;
 
-        // Remove character that's clicked on game screen
+        // Execute logic per click. Removing characters from Game Screen, Narrative stories, Restarting Game, etc.
+        // I defined narrativeInProgress as global variable - this prevents from player from skipping narrative stories in progress and ending game too early.
         gameScreen.addEventListener("click", (event) => { // "event" is triggered by user's actions like clicking on character
-            document.querySelector(".gunsight") ? document.querySelector(".gunsight").remove() : ""; // Remove gunsight idle animation when user starts playing
+            if (!narrativeInProgress) {
+                const character = event.target; // event.target is just like a reference that we can apply DOM methods on
 
-            const yoda = document.querySelector(".yoda");
-            const character = event.target; // event.target is just like a reference that we can apply DOM methods on
+                if (character.classList.value.includes("character")) { // This prevent deleting actual game, this ensures element clicked on game screen has a class ".character" removing actual character from game instead.
 
-            if (character.classList.value.includes("character")) { // This prevent deleting actual game, this ensures element clicked on game screen has a class ".character" removing actual character from game instead.
-                if (character.classList.value.includes("yoda")){ // Check if character clicked has ".yoda" distinct class, if selected character is baby yoda, then execute necessary logic.
-                    end(false);
-                } else {
-                    console.log(character.classList)
+                    clickTotal += 1; // I keep a count of user clicks so I know when to narrative stories to player. "Oh, finally you're here" at count 1 for example
+
+                    //console.log(clickTotal);
+
+                    narrativeP.style.display = "block"; // Display Narrative Block
+                    document.querySelector(".gunsight") ? document.querySelector(".gunsight").remove() : "";
+
+                    /************ Baby Yoda was shot by mistake - End game *************************/
+                    if (character.classList.value.includes("yoda")) { // Check if character clicked has ".yoda" distinct class, if selected character is baby yoda, then execute necessary logic.
+                        narrativeInProgress = true;
+                        narrativeInProg.style.display = "block";
+
+                        narrativeP.textContent = "You: " + narrative.you[0];
+
+                        setTimeout(() => {
+                            narrativeInProgress = false;
+                            narrativeInProg.style.display = "none";
+
+                            end();
+                        }, 2000);
+                        /*************** Remove Characters that was shot by player, Narrative stories, Restart Game if necessary ****/
+                    } else {
+                        //character.src = "/game-assets/explode.gif";
+                        character.classList.add("removed"); // Apply "remove" animation to character shot by player
+
+                        setTimeout(() => { // Wait for animation to finish, remove character from game screen
+                            character.remove();
+                        }, 500);
+
+                        //console.log(character.classList)
+                        if (clickTotal === 1) {
+                            narrativeInProgress = true;
+                            narrativeInProg.style.display = "block";
+
+                            // First narration
+                            narrativeP.innerHTML = "Baby Yoda: " + narrative.babyYoda[0] + "<br>" + "I'm being held hostage.";
+
+                            setTimeout(() => {
+                                narrativeP.textContent = "Baby Yoda: " + narrative.babyYoda[1];
+
+
+                                setTimeout(() => {
+                                    narrativeP.innerHTML = "You: " + narrative.you[1] + "<br>" + "Captors: " + narrative.captors[0];
+
+                                    narrativeInProgress = false;
+                                    narrativeInProg.style.display = "none";
+                                }, 3000);
+                            }, 3000);
+                        } else if (clickTotal === 5) {
+                            narrativeInProgress = true;
+                            narrativeInProg.style.display = "block";
+
+                            narrativeP.textContent = "Captors: " + narrative.captors[1];
+
+                            narrativeInProgress = false;
+                            narrativeInProg.style.display = "none";
+                        } else if (clickTotal === 9) {
+                            narrativeInProgress = true;
+                            narrativeInProg.style.display = "block";
+
+                            narrativeP.innerHTML = "Baby Yoda: " + narrative.babyYoda[2] + "<br>" + "You: " + narrative.you[2];
+
+                            setTimeout(() => {
+                                setTimeout(() => {
+                                    narrativeInProgress = false;
+                                    narrativeInProg.style.display = "none";
+                                    end();
+                                }, 3000)
+                            }, 1000);
+
+                        }
+                    }
+
                 }
-                
-                //character.src = "/game-assets/explode.gif";
-                character.classList.add("removed"); // Add class with custom animation for when character is defeated
+            } else {
 
-                setTimeout(() => { // Wait for animation to finish, remove character from game screen
-                  character.remove();  
-                }, 500);
             }
         })
     }
-
-    // Character narrative
-    function characterNarrative(){
-        const narrative = {
-            you: ["Baby Yoda!!! NOOOOOOOO!!!!!!", "I'll save you! Baby Yoda!", "Of course! Let's get the hell outta here!"],
-            babyYoda: ["Oh, finally you're here. (whispering) You've gotta get me outta here. (whispering)", "You're going to save me, right?", "Oh I can't belive it's over. Thanks."],
-            enemies: ["grumbles", "yells"]
-        }
-    }
-
-
 }
 
-function end(win = false){ // Adds parameter? - determine win or loss
-    //console.log(gameStatus)
-
-    /* 
-    if (!win){
-        alert("Baby Yoda!!! NOOOOOOOO!!!!!!");
-    } else {
-        alert("Congratulations! Replay?")
-    }
-    */
-
-
+function end() {
     game(); // restart game
 }

@@ -90,7 +90,7 @@ html {
     width: fit-content;
     font-size: 12px;
     padding: 5px;
-    animation: skipOptionPara 4s normal 3s forwards;
+    animation: skipOptionPara 4s normal 6s forwards;
     z-index: 10;
     opacity: 95%;
 }
