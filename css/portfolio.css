@@ -44,11 +44,18 @@ header ul {
     list-style: none;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    justify-items: center;
 }
 
 header ul li {
     text-decoration: underline;
+}
+
+header ul li:hover {
+    text-decoration-color: rgb(104, 248, 76);
+}
+
+header ul li:nth-child(2) {
+    margin-right: 1em;
 }
 
 header img {
@@ -74,7 +81,6 @@ header img {
 
 .about .about-me {
     background: rgba(0, 0, 0, 0.70);
-    border-radius: 16px;
 }
 
 .about .profile-img {
@@ -84,8 +90,8 @@ header img {
 }
 
 .about .profile-img img {
+    box-shadow: 0px 0px 10px rgb(255, 0, 0);
     width: 100%;
-    border-radius: 16px;
 }
 
 /* Stack 2 pictures on top by positioning both pictures in column 1 and row 1 */
@@ -99,15 +105,59 @@ header img {
     grid-column: 1;
     grid-row: 1;
     transform: rotateY(-180deg);
+    display: grid;
 }
 
 /* Animates front and back picture when container is hovered */
 .about .profile-img:hover .front {
-    animation: frontFlip .5s normal linear forwards;
+    animation: frontFlip 1s normal forwards;
 }
 
 .about .profile-img:hover .back {
-    animation: backFlip .5s normal linear forwards;
+    animation: backFlip 1s normal forwards;
+}
+
+.about .back img {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.about .back .back-text {
+    font-weight: 700;
+    background: rgba(0, 0, 0, 0.60);
+    grid-column: 1;
+    grid-row: 1;
+
+    display: grid;
+    justify-items: start;
+    padding: 16px;
+}
+
+.about .back-text {
+    font-size: 1vw;
+}
+
+.about .back-text p:last-child {
+    justify-self: end;
+    align-self: end;
+}
+
+.photo-gallery {
+    margin: 0 auto;
+    max-width: 90%;
+    columns: 5;
+    gap: 10px;
+}
+
+.photo-gallery img {
+    box-shadow: 0px 0px 7px rgb(104, 248, 76);
+    width: 100%;
+    height: auto;
+}
+
+.photo-gallery img:hover {
+    scale: 1.2;
+    z-index: 10;
 }
 
 
