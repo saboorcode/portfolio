@@ -4,7 +4,7 @@
 // The interpreter appears to move the declaration to top of scope prior to code execution.
 // https://developer.mozilla.org/en-US/docs/Glossary/Hoisting
 typer();
-generateProjectSection();
+generateProjectCards();
 
 /*******************/
 /*     TYPER       */
@@ -13,7 +13,7 @@ function typer() {
     // Realistic Typing Animation with blinking underscore "_"
     const jobTitlePara = document.querySelector(".job-title");
     jobTitlePara.textContent = "_";
-    const jobTitle = "Aspiring Frontend Web Developer";
+    const jobTitle = "Aspiring Web Developer";
 
     const underscore = document.createElement("span");
     underscore.textContent = "_";
@@ -43,7 +43,7 @@ function typer() {
 /*******************/
 /* PROJECT SECTION */
 /*******************/
-async function generateProjectSection() { // Defined async function to resolve a promise as value (project data). We need to retrieve project data before we even generate anything.
+async function generateProjectCards() { // Defined async function to resolve a promise as value (project data). We need to retrieve project data before we even generate anything.
     // Access local json file "saboor_data.json" with Fetch API
     // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
 

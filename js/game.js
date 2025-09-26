@@ -53,6 +53,7 @@ function game() {
         }
         const charactersArr = Object.values(characters); // Converted to array so I can determine length and loop on.
 
+        // Returns generated and random character with its image asset
         function generateRandomCharacter() {
             //const randomCharacter = charactersArr[Math.floor(Math.random() * charactersArr.length)];
 
@@ -61,7 +62,7 @@ function game() {
 
         /* Add random character to game screen with modified positioning via CSS using DOM Scripting */
         // "yoda" parameter is undefined, generating/adding other characters instead until only one yoda is defined (The one that needs saving!!)
-        function spawnCharacterOnGameScreen(yoda = undefined) {
+        function spawnCharacterOnGameScreen(yoda = undefined) { // "yoda" as fallback variable, random characters will be generated if it's undefined and yoda is spawned once if defined with baby yoda image asset
             //console.log(yoda);
             // Create character reference
             const character = document.createElement("img");
@@ -82,10 +83,10 @@ function game() {
                 character.classList.add("yoda");
             }
 
-            gameScreen.append(character)
+            gameScreen.append(character) // Adds (spawns) character to Game Screen
         }
 
-        /* Invoke function, adds character to game screen one at a time. We can determine how many characters can be added to the game screen */
+        /* Invoke function multiple times (there's probably better way to do this), adds character to game screen one at a time. We can determine how many characters can be added to the game screen */
         for (let i = 0; i < 9; i++) {
             spawnCharacterOnGameScreen();
         }
@@ -100,7 +101,7 @@ function game() {
     function shootCharacterAndNarrative() {
         const narrative = { // A collection of narrative quotes as hostage or player I found online - CSGO Forum
             you: ["Baby Yoda!!! NOOOOOOOO!!!!!!", "I'll save you, Baby Yoda!", "Of course! Let's get the hell outta here!"],
-            babyYoda: ["Oh, finally you're here. (whispering) You've gotta get me outta here. (whispering)", "You're going to save me, right?", "Oh I can't believe it's over! Thank you!!"],
+            babyYoda: ["Oh, finally you're here. You've gotta get me outta here. (whispering)", "You're going to save me, right?", "Oh I can't believe it's over! Thank you!!"],
             captors: ["GRUMBLES", "YELLS"]
         }
 
@@ -131,14 +132,14 @@ function game() {
                         narrativeInProgress = true;
                         narrativeInProg.style.display = "block";
 
-                        narrativeP.textContent = "You: " + narrative.you[0];
+                        narrativeP.innerHTML = "Baby Yoda: " + "y-- you wer supposed to sav.. me" + "<br>" + "You: " + narrative.you[0];
 
                         setTimeout(() => {
                             narrativeInProgress = false;
                             narrativeInProg.style.display = "none";
 
                             end();
-                        }, 2000);
+                        }, 3500);
                         /*************** Remove Characters that was shot by player, Narrative stories, Restart Game if necessary ****/
                     } else {
                         //character.src = "/game-assets/explode.gif";
@@ -149,6 +150,7 @@ function game() {
                         }, 500);
 
                         //console.log(character.classList)
+                        // Custom Narrative by Click Count. Baby Yoda: "Oh you are here!" at the start of game for example
                         if (clickTotal === 1) {
                             narrativeInProgress = true;
                             narrativeInProg.style.display = "block";
@@ -194,7 +196,7 @@ function game() {
 
                 }
             } else {
-
+                ///
             }
         })
     }

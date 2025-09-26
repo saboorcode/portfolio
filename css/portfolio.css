@@ -47,6 +47,10 @@ header ul {
     justify-items: center;
 }
 
+header ul li {
+    text-decoration: underline;
+}
+
 header img {
     height: 1em;
 }
@@ -59,6 +63,57 @@ header img {
     margin-top: -.8em;
 }
 
+/*************************************************/
+/**************  About Me  ***********************/
+/*************************************************/
+#about {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 1em;
+}
+
+.about .about-me {
+    background: rgba(0, 0, 0, 0.70);
+    border-radius: 16px;
+}
+
+.about .profile-img {
+    display: grid;
+    max-width: 35vw;
+    /* My oberservation - Max-width is fixed width at 100% browser zoom, width say.. at 25vw will actually scales with browser zoom */
+}
+
+.about .profile-img img {
+    width: 100%;
+    border-radius: 16px;
+}
+
+/* Stack 2 pictures on top by positioning both pictures in column 1 and row 1 */
+.about .profile-img .front {
+    grid-column: 1;
+    grid-row: 1;
+    z-index: 1;
+}
+
+.about .profile-img .back {
+    grid-column: 1;
+    grid-row: 1;
+    transform: rotateY(-180deg);
+}
+
+/* Animates front and back picture when container is hovered */
+.about .profile-img:hover .front {
+    animation: frontFlip .5s normal linear forwards;
+}
+
+.about .profile-img:hover .back {
+    animation: backFlip .5s normal linear forwards;
+}
+
+
+/*************************************************/
+/**************  Projects  ***********************/
+/*************************************************/
 .project {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -86,8 +141,8 @@ header img {
 .project-card .front-card,
 .project-card .back-card {
     /* Overlay back-card with front-card */
-    grid-column: 1 / -1;
-    grid-row: 1 / 1;
+    grid-column: 1;
+    grid-row: 1;
 }
 
 .project-card .front-card {
@@ -136,13 +191,15 @@ header img {
     max-width: 100%;
 }
 
-.project-card .back-card p:nth-child(1), .project-card .back-card p:nth-child(2) {
+.project-card .back-card p:nth-child(1),
+.project-card .back-card p:nth-child(2) {
     font-weight: 700;
 }
 
 .project-card .back-card p:nth-child(2) {
     justify-self: end;
-    white-space: pre; /* https://developer.mozilla.org/en-US/docs/Web/CSS/white-space */
+    white-space: pre;
+    /* https://developer.mozilla.org/en-US/docs/Web/CSS/white-space */
 }
 
 .project-card .back-card p:nth-child(3) {
@@ -177,7 +234,7 @@ PURE CSS CARD FLIP EFFECT
 */
 
 /* I have elected to use JavaScript for Card Flip Effect, "flipProjectCard()" in "portfolio.js" file add or remove classes below on user's click */
-/* In my opinion, it's better user clicks card to flip instead of hover, this way multiple cards can be flipped if user want to */
+/* In my opinion, it's better user clicks card to flip instead of hover, this way multiple cards remain flipped if user want to */
 .project-card-flip {
     animation: cardRotate 1s normal 0s forwards;
 }
@@ -198,6 +255,7 @@ PURE CSS CARD FLIP EFFECT
 
 }
 
+/* Projects Section */
 @keyframes cardRotate {
     to {
         transform: rotateY(180deg);
@@ -207,14 +265,29 @@ PURE CSS CARD FLIP EFFECT
 @keyframes hideCard {
     to {
         opacity: 0%;
-        display: none; /* Set display: none; so users can interact with text actions or links on back of card */
+        display: none;
+        /* Set display: none; so users can interact with text actions or links on back of card */
     }
 }
-
 
 @keyframes showCard {
     to {
         opacity: 100%;
+    }
+}
+
+/* About Section - I coded this animation AFTER Projects Section Animation Part so this is probably better way */
+@keyframes frontFlip {
+    to {
+        z-index: 0;
+        transform: rotateY(180deg);
+    }
+}
+
+@keyframes backFlip {
+    to {
+        z-index: 1;
+        transform: rotateY(0deg);
     }
 }
 
