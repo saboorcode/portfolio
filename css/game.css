@@ -10,7 +10,7 @@
 
 .little-game {
     position: relative;
-    background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("/game-assets/desert.png") no-repeat center center / cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("/assets/game/desert.png") no-repeat center center / cover;
     min-height: 60vh; /* rid of this height property later, let content determine height */
     box-shadow: 0px 0px 20px rgb(255, 0, 0);
     overflow: hidden;

@@ -18,7 +18,7 @@
             "projectName": "HD Requester (Senior Project)",
             "projectDesc": "HD Requester is a senior project as part of a Sac State course. It is a secure computer parts management system designed to handle check-in and check-out of parts within a secured area at an e-waste facility. My role in this project was to implement a pagination system for the inventory table and to write Selenium testing scripts for checking in/out parts, inventory part requests, add/remove items, and search functionality.",
             "techStack": "JS, SQLite, Python, Argon2, Flask",
-            "image": "/assets/projects/hdr.png",
+            "image": "/assets/projects/hdr1.png",
             "link": "https://github.com/saboorcode/HD-Requester"
         },
         {

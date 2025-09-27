@@ -81,6 +81,8 @@ header img {
 
 .about .about-me {
     background: rgba(0, 0, 0, 0.70);
+    text-align: left;
+    padding-left: 1em;
 }
 
 .about .profile-img {

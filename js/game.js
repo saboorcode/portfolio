@@ -28,7 +28,7 @@ function game() {
         gameScreen.classList.add("little-game");
 
         const img = document.createElement("img");
-        img.src = "/game-assets/gunsight.png";
+        img.src = "/assets/game/gunsight.png";
         img.classList.add("gunsight");
 
         gameScreen.append(img);
@@ -46,9 +46,9 @@ function game() {
 
         // A collection of characters (image files from assets) I want to print on game screen randomly
         const characters = { // In case I want to retrieve specific character
-            jabba: "/game-assets/characters/jabba.png",
-            jarjar: "/game-assets/characters/jarjar.png",
-            stormtrooper: "/game-assets/characters/stormtrooper.png"
+            jabba: "/assets/game/characters/jabba.png",
+            jarjar: "/assets/game/characters/jarjar.png",
+            stormtrooper: "/assets/game/characters/stormtrooper.png"
             //yoda: "/assets/characters/yoda.png"
         }
         const charactersArr = Object.values(characters); // Converted to array so I can determine length and loop on.
@@ -91,7 +91,7 @@ function game() {
             spawnCharacterOnGameScreen();
         }
 
-        spawnCharacterOnGameScreen("/game-assets/characters/yoda.png"); // Add baby yoda to game screen once
+        spawnCharacterOnGameScreen("/assets/game/characters/yoda.png"); // Add baby yoda to game screen once
     }
 
     /**********************************************************************************************************************************************************************************/

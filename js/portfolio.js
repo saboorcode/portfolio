@@ -92,7 +92,7 @@ async function generateProjectCards() { // Defined async function to resolve a p
 
             const projectCardLink = document.createElement("a");
 
-            externalLink.src = "/assets/icons/external-link.png";
+            externalLink.src = "/assets/icons/link.jpg";
             projectCardLink.append(externalLink);
 
             projectCardLink.setAttribute("href", entry.link); // https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute
